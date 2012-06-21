@@ -20,7 +20,7 @@ Puppet::Type.newtype(:sshprivkey) do
     desc 'filepath where the SSH key is to be placed.'
 
     validate do |value|
-      unless value =~ /^\/[\w\/]+$/
+      unless value =~ /^\/[\w\.\/]+$/
         raise ArgumentError, "file path is not valid: #{value}"
       end
 
