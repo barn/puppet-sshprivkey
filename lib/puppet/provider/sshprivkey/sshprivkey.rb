@@ -9,7 +9,7 @@ Puppet::Type.type(:sshprivkey).provide(:sshprivkey) do
 
   def create
     begin
-      Puppet::Util.execute( [ '/usr/bin/ssh-keygen' , '-q', '-N', '', '-f', @resource[:path] ] , :uid => @resource[:user] )
+      Puppet::Util::Execution.execute( [ '/usr/bin/ssh-keygen' , '-q', '-N', '', '-f', @resource[:path] ] , :uid => @resource[:user] )
     rescue => e
       Puppet.warning "ssh-keygen failed in a bad way. '#{e}'"
       return false
